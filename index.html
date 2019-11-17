@@ -1,0 +1,157 @@
+<!--**********************************************************************-->
+<!-- This program generates a ramdom pasword.                             -->
+<!-- user inputs:  1) the length of the random password, and              -->
+<!-- 2) the type of password required.  The options are the following     -->
+<!--    2.a) special characters                                           -->
+<!--    2.b) numeric characters                                           -->
+<!--    2.c) lowercase characters                                         -->
+<!--    2.d) uppercase characters                                         -->
+<!--**********************************************************************-->
+
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+     <title>Marco Carrillo(c) Random password generator</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body style="background-image: url(images/little_pluses.png);">
+
+     
+    <!--********************************-->
+    <!--  Displaying original page       -->
+    <!--********************************-->
+    
+    <div class="container bg-white my-5">  <!--main wrapper-->
+
+         <div class="row text-center my-5">  <!-- first row, contains the title centered-->
+            <div class="col-sm-12 justify-content-center">
+                <h1>Password Generator</h1>
+            </div>
+         </div>  <!-- first row ends here-->
+
+
+         <div class="row">  <!-- second row:  contains user inputs-->
+
+              <div class="col-sm-2"></div>    <!--to manage margins better-->              
+              
+              <div class="col-sm-3 border rounded-lg">   <!--asks the length of the password to generate (8 to 129-->
+                  <form>
+                      <div class="form-group text-center">
+                           <label for="formControlRange">Length of password (8-126)</label>
+                           <input type="range" class="custom-range" id="PwdLength" min="8" max="126" value="20">
+                           <div id="result">Current Value: <b></b></div>  <!--Provides result-->
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm-2"></div>
+
+                <div class="col-sm-3 border rounded-lg">  <!-- Asks what types of characters need to be generated-->
+
+                    <div class="form-check">
+                            <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars1" value="option1" checked>
+                            <label class="form-check-label" for="TypeofChars1">
+                                   Special characters (default)
+                            </label>
+                       </div>
+   
+                     <div class="form-check">
+                          <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars2" value="option2">
+                          <label class="form-check-label" for="TypeofChars2">
+                                 Numeric characters
+                          </label>
+                     </div>
+                     
+                     <div class="form-check">
+                          <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars3" value="option3">
+                          <label class="form-check-label" for="TypeofChars3">
+                                 Lowercase characters
+                          </label>
+                     </div>
+                     
+                     <div class="form-check">
+                          <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars4" value="option4">
+                          <label class="form-check-label" for="TypeofChars4">
+                                 Uppercase characters
+                          </label>
+                     </div>
+                     
+                </div>   <!-- types of characters need to be generaterd-->
+                
+                <div class="col-sm-2"></div>
+         </div>  <!--second row ends here-->
+
+         <div class="row my-5 text-center">  <!--third row:  heading for results-->
+              <div class="col-sm-12">
+                   <h2>This is your custom generated password:</h2>
+              </div>
+         </div>  <!-- third row ends here-->
+
+         <div class="row border text-center mx-5 mb-3">  <!--fourth row:  presents the results of the password-->
+              <div class="col-sm-12 my-3">
+                   <h5>dfsdfklje87324FA#2Riopurew32dsf3325835h</h5>
+              </div>
+         </div>  <!--fourth row ends here-->
+
+         <div class="row text-center mx-5 pb-5">   <!-- Fifth row, buttons for next actions-->
+             <div class="col"></div>
+
+             <div class="col-sm-4">   <!--buttom that generates the password-->
+                <button type="button" class="btn btn-danger btn-lg rounded-pill">Generate Password</button>  
+             </div>
+
+             <div class="col-sm-1"></div>
+
+             <div class="col-sm-4 text-center">   <!-- buttom that copies to the clipboard-->
+                    <button type="button" class="btn btn-info btn-lg rounded-pill">Copy to clipboard</button>  
+             </div>
+
+             <div class="col"></div>
+
+         </div>  <!-- fifth row ends here-->
+
+    </div>   <!-- main wrapper-->
+     
+    <!--******************************************************-->
+    <!-- Downloading JQuery to enable menu responsive design  -->
+    <!--******************************************************-->
+
+     
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+     <!--****************************************************************************-->
+     <!-- Setting some values depending on screen width - smaller than large screen  -->
+     <!-- which is the toggle version for this design                                -->
+     <!--****************************************************************************-->
+
+     <script src="assets/js/events.js"></script>  
+
+     <script>
+            $(document).ready(function(){
+                // Read value on page load
+                $("#result b").html($("#PwdLength").val());
+        
+                // Read value on change
+                $("#PwdLength").change(function(){
+                    $("#result b").html($(this).val());
+                });
+
+            });        
+      </script> 
+        
+      <script>
+          console.log($("TypeofChars1").value)
+      
+      </script>
+
+
+</body>
+
+</html>
