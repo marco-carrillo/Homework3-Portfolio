@@ -62,43 +62,36 @@
 
                 <div class="col-md-0 col-lg"></div>
 
-                <div class="col-lg-4 col-md-11 border rounded-lg align-self-center mx-2 my-2">  <!-- Asks what types of characters need to be generated-->
+                <div class="col-lg-4 col-md-11 border rounded-lg py-2 mx-2 my-2">  <!-- Asks what types of characters need to be generated-->
 
-                    <div class="form-check">  <!--check buttom 1-->
-                            <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars1" value="option1" checked>
+                    <div class="form-check">  <!--check box 1-->
+                            <input class="form-check-input" type="checkbox" id="TypeofChars1" value="option1" checked>
                             <label class="form-check-label" for="TypeofChars1">
                                    Special
                             </label>
-                       </div>  <!--check buttom 1-->
+                       </div>  <!--check box 1-->
    
-                     <div class="form-check">  <!--check buttom 2-->
-                          <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars2" value="option2">
+                     <div class="form-check">  <!--check box 2-->
+                          <input class="form-check-input" type="checkbox" id="TypeofChars2" value="option2" checked>
                           <label class="form-check-label" for="TypeofChars2">
                                  Numeric
                           </label>
-                     </div>  <!--check buttom 2-->
+                     </div>  <!--check box 2-->
                      
-                     <div class="form-check">  <!--check buttom 3-->
-                          <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars3" value="option3">
+                     <div class="form-check">  <!--check box 3-->
+                          <input class="form-check-input" type="checkbox" id="TypeofChars3" value="option3" checked>
                           <label class="form-check-label" for="TypeofChars3">
                                  Lowercase
                           </label>
-                     </div>  <!--check buttom 3-->
+                     </div>  <!--check box 3-->
                      
-                     <div class="form-check">  <!--check buttom 4-->
-                          <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars4" value="option4">
+                     <div class="form-check">  <!--check box 4-->
+                          <input class="form-check-input" type="checkbox" id="TypeofChars4" value="option4" checked>
                           <label class="form-check-label" for="TypeofChars4">
                                  Uppercase
                           </label>
-                     </div>  <!--check buttom 4-->
+                     </div>  <!--check box 4-->
 
-                     <div class="form-check">  <!--check buttom 5-->
-                         <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars5" value="option5">
-                         <label class="form-check-label" for="TypeofChars5">
-                                Combination
-                         </label>
-                    </div>  <!--check buttom 5-->
-                     
                 </div>   <!-- row:  types of characters need to be generaterd-->
                 
                 <div class="col-md-0 col-lg"></div>    <!--to manage margins better-->              
@@ -121,7 +114,7 @@
          <div class="row border text-center mx-5 mb-3">  <!--fourth row:  presents the results of the password-->
               <div class="col-sm-12 my-3">
                    <div class="container ">
-                         <p class="overflow-auto py-2" id="PasswordResult">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx</p>
+                         <p class="overflow-auto py-2" id="PasswordResult">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
                     </div>
                </div>
          </div>  <!--fourth row ends here-->
@@ -211,10 +204,12 @@
                document.getElementById("MessageToCustomer").style.color="white";  // hiding the message to user 
                document.getElementById("UserRequestedPwdLength").value=45;        // setting the password length at 45
                document.getElementById("result").innerHTML="45";                  // showing the password length value
-               document.getElementById("TypeofChars1").checked=true;  // automatically togles all other buttons to false
-               document.getElementById("CopyToClippboard").disabled=true;
+               document.getElementById("TypeofChars1").checked=true;  //   all choices checked
+               document.getElementById("TypeofChars2").checked=true;  //  all choices checked
+               document.getElementById("TypeofChars3").checked=true;  //  all choices checked
+               document.getElementById("TypeofChars4").checked=true;  //  all choices checked
+               document.getElementById("CopyToClippboard").disabled=true; // all choices checked
           })
-
 
           //***************************************************************************************
           // The following code Copies the password to the clipboard.  It is called when the user 
@@ -230,26 +225,40 @@
                selection.addRange(range);
                //add to clipboard.
                document.execCommand('copy');
+               selection.removeAllRanges();
+
+               alert("Password "+document.getElementById("PasswordResult").innerText+ "has been copied to clipboard.");
           })
 
           //********************************************************************************************
           //  For the length of the password, it generates a random index.  It accepts two parameters
           //  PwdLength:  Numberic, represents the length of the array
-          //  Option:  The type of characters included in the password generated, as follows
-          //        1) Special characters
-          //        2) Numeric
-          //        3) Alphabetic, lowercase
-          //        4) Alphanumeric, uppercase
-          //        5) A combination of all of the above characters
+          //  Option1-4 specified the type of characters included in the password generated, as follows
+          //        Option1: Special characters
+          //        Option2: Numeric
+          //        Option3: Alphabetic, lowercase
+          //        Option4: Alphanumeric, uppercase
+          //  Option1-4 are boolean
           //********************************************************************************************
 
-           function CalculateRandomPwd(PwdLength,Option) 
+           function CalculateRandomPwd(PwdLength,Option1,Option2,Option3,Option4) 
            {
-               if (Option===1) {var ArrayofCharacters='\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~'.split('')}
-               else if (Option===2) {var ArrayofCharacters='0123456789'.split('')}
-               else if (Option===3) {var ArrayofCharacters='abcdefghijklmnopqrstuvwxyz'.split('')}
-               else if (Option===4) {var ArrayofCharacters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')}
-               else if (Option===5) {var ArrayofCharacters='\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')}
+
+               // The following arrays are potential candidates for being included in the password depending on
+               // the type of characters the user selected
+               var ArrayofCharacters1='\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~'.split('');
+               var ArrayofCharacters2='0123456789'.split('');
+               var ArrayofCharacters3='abcdefghijklmnopqrstuvwxyz'.split('');
+               var ArrayofCharacters4='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+               // Finalized the potential characters to be included in the password
+               // Variable ArrayofCharacters to contain all potential candidates
+
+               var ArrayofCharacters=[];
+               if(Option1) {ArrayofCharacters=ArrayofCharacters.concat(ArrayofCharacters1)};
+               if(Option2) {ArrayofCharacters=ArrayofCharacters.concat(ArrayofCharacters2)};
+               if(Option3) {ArrayofCharacters=ArrayofCharacters.concat(ArrayofCharacters3)};
+               if(Option4) {ArrayofCharacters=ArrayofCharacters.concat(ArrayofCharacters4)};
 
                var LengthOfChoices=ArrayofCharacters.length;  // how many character choices we have
                var RandomIndex=0;  //  Random number to access the array
@@ -258,7 +267,7 @@
                // Calculating the random password
                for (var i=0;i<PwdLength;i++) {
                     RandomIndex=Math.floor(Math.random() * (LengthOfChoices));
-                    RandomPassword=RandomPassword+ArrayofCharacters[RandomIndex]
+                    RandomPassword=RandomPassword+ArrayofCharacters[RandomIndex];
                };
 
            return (RandomPassword);
@@ -271,21 +280,33 @@
            //*********************************************************************************
 
           $("#GeneratePassword").click(function()  //  This code executes when user clicks on Generate password
-          {    
-               var OptionSelected =0; 
-               if      (document.getElementById("TypeofChars1").checked) {OptionSelected =1}
-               else if (document.getElementById("TypeofChars2").checked) {OptionSelected =2}
-               else if (document.getElementById("TypeofChars3").checked) {OptionSelected =3}
-               else if (document.getElementById("TypeofChars4").checked) {OptionSelected =4}
-               else if (document.getElementById("TypeofChars5").checked) {OptionSelected =5}
+          {   
+               // initializing which character type user selected
+               
+               var Option1=false;
+               var Option2=false;
+               var Option3 =false;
+               var Option4 =false;  // Optionx boolean
 
-               // Updating the value of the password on the clipboard
+               if(document.getElementById("TypeofChars1").checked) {Option1 =true};
+               if(document.getElementById("TypeofChars2").checked) {Option2 =true};
+               if(document.getElementById("TypeofChars3").checked) {Option3 =true};
+               if(document.getElementById("TypeofChars4").checked) {Option4 =true};
 
-               document.getElementById("PasswordResult").innerText=CalculateRandomPwd($("#UserRequestedPwdLength").val(),OptionSelected)
-               document.getElementById("PasswordResult").style.color="black";  // Displays the password
-               document.getElementById("MessageToCustomer").style.color="black";  // Displays the message to user
-               document.getElementById("CopyToClippboard").disabled=false;  // Enables button to copy to clipboard
-               document.getElementById("ResetToDefaults").disabled=false;  // Enables button to reset to defaults
+
+               // Validates that at least one type of character was selected.  If so, calls the function
+               // to generate the password.  Otherwise, provides and alert and does nothing
+
+               if(Option1||Option2||Option3||Option4) {
+
+                    // Updating the value of the password on the clipboard
+                    document.getElementById("PasswordResult").innerText=CalculateRandomPwd($("#UserRequestedPwdLength").val(),Option1,Option2,Option3,Option4)
+                    document.getElementById("PasswordResult").style.color="black";  // Displays the password
+                    document.getElementById("MessageToCustomer").style.color="black";  // Displays the message to user
+                    document.getElementById("CopyToClippboard").disabled=false;  // Enables button to copy to clipboard
+                    document.getElementById("ResetToDefaults").disabled=false;  // Enables button to reset to defaults
+               }
+               else {alert("Please select at least one character type to continue")}
 
           })  //  End of function when user clicks on Generate password
       </script>
