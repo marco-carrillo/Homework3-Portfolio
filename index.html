@@ -53,8 +53,8 @@
               <div class="col-lg-4 col-md-11 border rounded-lg align-self-center mx-2 my-2">   <!--asks the length of the password to generate (8 to 129-->
                   <form>
                       <div class="form-group text-center">
-                           <label for="formControlRange">Length of password (8-126)</label>
-                           <input type="range" class="custom-range" id="UserRequestedPwdLength" min="8" max="126" value="45">
+                           <label for="formControlRange">Length of password (8-128)</label>
+                           <input type="range" class="custom-range" id="UserRequestedPwdLength" min="8" max="128" value="45">
                            <div>Current Value: <b id="result"></b></div>  <!--Provides result-->
                         </div>
                     </form>
@@ -120,10 +120,10 @@
 
          <div class="row border text-center mx-5 mb-3">  <!--fourth row:  presents the results of the password-->
               <div class="col-sm-12 my-3">
-                   <div class="container overflow-auto">
-                         <h5 id="PasswordResult">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h5>
-                   </div>
-              </div>
+                   <div class="container ">
+                         <p class="overflow-auto py-2" id="PasswordResult">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx</p>
+                    </div>
+               </div>
          </div>  <!--fourth row ends here-->
 
           <!--***********************************************************************************************************-->
@@ -258,12 +258,8 @@
                // Calculating the random password
                for (var i=0;i<PwdLength;i++) {
                     RandomIndex=Math.floor(Math.random() * (LengthOfChoices));
-                    RandomPassword=RandomPassword+ArrayofCharacters[RandomIndex];
+                    RandomPassword=RandomPassword+ArrayofCharacters[RandomIndex]
                };
-
-               console.log(RandomPassword)
-               console.log(typeof RandomPassword)
-               console.log(RandomPassword.length)
 
            return (RandomPassword);
            }   // End of function CalculateRandomPwd
@@ -285,11 +281,11 @@
 
                // Updating the value of the password on the clipboard
 
-               document.getElementById("PasswordResult").style.color="black";
-               document.getElementById("MessageToCustomer").style.color="black";
-               document.getElementById("PasswordResult").innerHTML=CalculateRandomPwd($("#UserRequestedPwdLength").val(),OptionSelected)
-               document.getElementById("CopyToClippboard").disabled=false;
-               document.getElementById("ResetToDefaults").disabled=false;
+               document.getElementById("PasswordResult").innerText=CalculateRandomPwd($("#UserRequestedPwdLength").val(),OptionSelected)
+               document.getElementById("PasswordResult").style.color="black";  // Displays the password
+               document.getElementById("MessageToCustomer").style.color="black";  // Displays the message to user
+               document.getElementById("CopyToClippboard").disabled=false;  // Enables button to copy to clipboard
+               document.getElementById("ResetToDefaults").disabled=false;  // Enables button to reset to defaults
 
           })  //  End of function when user clicks on Generate password
       </script>
