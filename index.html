@@ -16,102 +16,136 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body style="background-image: url(images/little_pluses.png);">
 
      
-    <!--********************************-->
-    <!--  Displaying original page       -->
-    <!--********************************-->
+    <!--********************************************************-->
+    <!--  Displaying main page.  It has 5 rows as follows       -->
+    <!--  First row:  The main title of the page                -->
+    <!--  Second row:  User inputs: 1) length, 2) type          -->
+    <!--  Third row:  Message only visible after "generate" click-->
+    <!--  Fourth row:  The random password generated             -->
+    <!--  Fifth row:  The buttons showing actions               -->
+    <!--*******************************************************-->
     
     <div class="container bg-white my-5">  <!--main wrapper-->
 
-         <div class="row text-center my-5">  <!-- first row, contains the title centered-->
+          <!--****************************-->
+          <!--First row:  main page title -->
+          <!--****************************-->
+
+         <div class="row text-center my-5">  
             <div class="col-sm-12 justify-content-center">
                 <h1>Password Generator</h1>
             </div>
          </div>  <!-- first row ends here-->
 
+          <!--*********************************************-->
+          <!--Second row:  User inputs:  1) length, 2) type-->
+          <!--*********************************************-->
 
-         <div class="row">  <!-- second row:  contains user inputs-->
+         <div class="row border mx-2 py-2 justify-content-center">  
 
-              <div class="col-sm-2"></div>    <!--to manage margins better-->              
+              <div class="col-md-0 col-lg"></div>    <!--to manage margins better-->              
               
-              <div class="col-sm-3 border rounded-lg">   <!--asks the length of the password to generate (8 to 129-->
+              <div class="col-lg-4 col-md-11 border rounded-lg align-self-center mx-2 my-2">   <!--asks the length of the password to generate (8 to 129-->
                   <form>
                       <div class="form-group text-center">
                            <label for="formControlRange">Length of password (8-126)</label>
-                           <input type="range" class="custom-range" id="PwdLength" min="8" max="126" value="20">
-                           <div id="result">Current Value: <b></b></div>  <!--Provides result-->
+                           <input type="range" class="custom-range" id="UserRequestedPwdLength" min="8" max="126" value="45">
+                           <div>Current Value: <b id="result"></b></div>  <!--Provides result-->
                         </div>
                     </form>
                 </div>
 
-                <div class="col-sm-2"></div>
+                <div class="col-md-0 col-lg"></div>
 
-                <div class="col-sm-3 border rounded-lg">  <!-- Asks what types of characters need to be generated-->
+                <div class="col-lg-4 col-md-11 border rounded-lg align-self-center mx-2 my-2">  <!-- Asks what types of characters need to be generated-->
 
-                    <div class="form-check">
+                    <div class="form-check">  <!--check buttom 1-->
                             <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars1" value="option1" checked>
                             <label class="form-check-label" for="TypeofChars1">
-                                   Special characters (default)
+                                   Special
                             </label>
-                       </div>
+                       </div>  <!--check buttom 1-->
    
-                     <div class="form-check">
+                     <div class="form-check">  <!--check buttom 2-->
                           <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars2" value="option2">
                           <label class="form-check-label" for="TypeofChars2">
-                                 Numeric characters
+                                 Numeric
                           </label>
-                     </div>
+                     </div>  <!--check buttom 2-->
                      
-                     <div class="form-check">
+                     <div class="form-check">  <!--check buttom 3-->
                           <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars3" value="option3">
                           <label class="form-check-label" for="TypeofChars3">
-                                 Lowercase characters
+                                 Lowercase
                           </label>
-                     </div>
+                     </div>  <!--check buttom 3-->
                      
-                     <div class="form-check">
+                     <div class="form-check">  <!--check buttom 4-->
                           <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars4" value="option4">
                           <label class="form-check-label" for="TypeofChars4">
-                                 Uppercase characters
+                                 Uppercase
                           </label>
-                     </div>
-                     
-                </div>   <!-- types of characters need to be generaterd-->
-                
-                <div class="col-sm-2"></div>
-         </div>  <!--second row ends here-->
+                     </div>  <!--check buttom 4-->
 
-         <div class="row my-5 text-center">  <!--third row:  heading for results-->
+                     <div class="form-check">  <!--check buttom 5-->
+                         <input class="form-check-input" type="radio" name="TypeofPassword" id="TypeofChars5" value="option5">
+                         <label class="form-check-label" for="TypeofChars5">
+                                Combination
+                         </label>
+                    </div>  <!--check buttom 5-->
+                     
+                </div>   <!-- row:  types of characters need to be generaterd-->
+                
+                <div class="col-md-0 col-lg"></div>    <!--to manage margins better-->              
+          </div>  <!--second row ends here-->
+
+          <!--******************************************************************************-->
+          <!--Third row:  heading for results.  Visible only after generating the passwrord -->
+          <!--******************************************************************************-->
+
+         <div class="row my-5 text-center">  
               <div class="col-sm-12">
-                   <h2>This is your custom generated password:</h2>
+                   <h2 id="MessageToCustomer">This is your custom generated password:</h2>
               </div>
          </div>  <!-- third row ends here-->
 
+          <!--************************************-->
+          <!--Forth row:  Random password results -->
+          <!--************************************-->
+
          <div class="row border text-center mx-5 mb-3">  <!--fourth row:  presents the results of the password-->
               <div class="col-sm-12 my-3">
-                   <h5>dfsdfklje87324FA#2Riopurew32dsf3325835h</h5>
+                   <div class="container overflow-auto">
+                         <h5 id="PasswordResult">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h5>
+                   </div>
               </div>
          </div>  <!--fourth row ends here-->
 
-         <div class="row text-center mx-5 pb-5">   <!-- Fifth row, buttons for next actions-->
-             <div class="col"></div>
+          <!--***********************************************************************************************************-->
+          <!--Fifth row:  Buttons that allow user to 1) reset to defaults, 2) generate password, 3) copy it to clipboard -->
+          <!--***********************************************************************************************************-->
 
-             <div class="col-sm-4">   <!--buttom that generates the password-->
-                <button type="button" class="btn btn-danger btn-lg rounded-pill">Generate Password</button>  
+         <div class="row text-center mx-5 pb-5">   
+             <div class="col-sm-0 col-lg"></div>
+
+             <div class="col-sm-12 col-md-4 col-lg-3 py-1">   <!--buttom that clears the screen-->
+                <button type="button" id="ResetToDefaults" class="btn btn-info btn-lg rounded-pill btn-block" disabled>Reset to defaults</button>  
              </div>
 
-             <div class="col-sm-1"></div>
-
-             <div class="col-sm-4 text-center">   <!-- buttom that copies to the clipboard-->
-                    <button type="button" class="btn btn-info btn-lg rounded-pill">Copy to clipboard</button>  
+             <div class="col-sm-12 col-md-4 col-lg-3 py-1">  <!--buttom that generates the password-->
+                 <button type="button" id="GeneratePassword" class="btn btn-danger btn-lg rounded-pill btn-block">Generate Password</button>  
              </div>
 
-             <div class="col"></div>
+             <div class="col-sm-12 col-md-4 col-lg-3 text-center py-1">   <!-- buttom that copies to the clipboard-->
+                    <button type="button" id="CopyToClippboard" class="btn btn-info btn-lg rounded-pill btn-block" disabled>Copy to clipboard</button>  
+             </div>
+
+             <div class="col-sm-0 col-lg"></div>
 
          </div>  <!-- fifth row ends here-->
 
@@ -126,32 +160,138 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-     <!--****************************************************************************-->
-     <!-- Setting some values depending on screen width - smaller than large screen  -->
-     <!-- which is the toggle version for this design                                -->
-     <!--****************************************************************************-->
-
-     <script src="assets/js/events.js"></script>  
+     <!--*************************************************************************************************-->
+     <!-- The following section is JQuery and JavaScript code to enable functionality                     -->
+     <!-- There are 4 different sets of functionality in this section                                     -->
+     <!-- 1) Jquery enables the numeric spinner to select password length.                                -->
+     <!-- 2) Main page load:  Sets the environment for the page.                                          -->
+     <!-- 3) Event that runs when user selects button to reset to defaults                                -->
+     <!-- 4) Event that runs when user clicks on generate password.  It calls CalculateRandompwd function -->
+     <!-- 5) Event that runs when user clicks on copy to clipboard                                        -->
+     <!-- 6) Function CalculateRandompwd.  Calculates password conforming to user input                   -->
+     <!--*************************************************************************************************-->
 
      <script>
-            $(document).ready(function(){
+
+          /***************************************************************************************************/
+          // Following section hides the message to the user, and the value of the password generated
+          // This hidding is eliminated when the user clicks on button generate random password and it is
+          // hidden again if user clicks on button restore defaults
+          /***************************************************************************************************/
+
+          document.getElementById("PasswordResult").style.color="white";
+          document.getElementById("MessageToCustomer").style.color="white";
+          document.getElementById("MessageToCustomer").style.color="white";
+
+          /***************************************************************************************************/
+          // Following section reads the value of the numerical range and writes to the html of id # result 
+          /***************************************************************************************************/
+
+          $(document).ready(function(){
                 // Read value on page load
-                $("#result b").html($("#PwdLength").val());
+                $("#result").html($("#UserRequestedPwdLength").val());
         
                 // Read value on change
-                $("#PwdLength").change(function(){
-                    $("#result b").html($(this).val());
+                $("#UserRequestedPwdLength").change(function(){
+                    $("#result").html($(this).val());
                 });
 
-            });        
-      </script> 
-        
-      <script>
-          console.log($("TypeofChars1").value)
-      
+          });        
+
+          //***************************************************************************************
+          // The following code will execute when the user requests to clear the screen
+          // from a password originally displayed, and clears the screen, hides password
+          // result and customer message.  Also resets the password length to the
+          // default of 45 characters, and the type of characters to special
+          //***************************************************************************************
+
+          $("#ResetToDefaults").click(function()  //  This code executes when user clicks on Generate password
+          {
+               document.getElementById("PasswordResult").style.color="white";     // hiding the password result
+               document.getElementById("MessageToCustomer").style.color="white";  // hiding the message to user 
+               document.getElementById("UserRequestedPwdLength").value=45;        // setting the password length at 45
+               document.getElementById("result").innerHTML="45";                  // showing the password length value
+               document.getElementById("TypeofChars1").checked=true;  // automatically togles all other buttons to false
+               document.getElementById("CopyToClippboard").disabled=true;
+          })
+
+
+          //***************************************************************************************
+          // The following code Copies the password to the clipboard.  It is called when the user 
+          // clicks on the button copy to clipboard.
+          //***************************************************************************************
+
+          $("#CopyToClippboard").click(function() {
+               var text = document.getElementById("PasswordResult");
+               var selection = window.getSelection();
+               var range = document.createRange();
+               range.selectNodeContents(text);
+               selection.removeAllRanges();
+               selection.addRange(range);
+               //add to clipboard.
+               document.execCommand('copy');
+          })
+
+          //********************************************************************************************
+          //  For the length of the password, it generates a random index.  It accepts two parameters
+          //  PwdLength:  Numberic, represents the length of the array
+          //  Option:  The type of characters included in the password generated, as follows
+          //        1) Special characters
+          //        2) Numeric
+          //        3) Alphabetic, lowercase
+          //        4) Alphanumeric, uppercase
+          //        5) A combination of all of the above characters
+          //********************************************************************************************
+
+           function CalculateRandomPwd(PwdLength,Option) 
+           {
+               if (Option===1) {var ArrayofCharacters='\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~'.split('')}
+               else if (Option===2) {var ArrayofCharacters='0123456789'.split('')}
+               else if (Option===3) {var ArrayofCharacters='abcdefghijklmnopqrstuvwxyz'.split('')}
+               else if (Option===4) {var ArrayofCharacters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')}
+               else if (Option===5) {var ArrayofCharacters='\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')}
+
+               var LengthOfChoices=ArrayofCharacters.length;  // how many character choices we have
+               var RandomIndex=0;  //  Random number to access the array
+               var RandomPassword="";  // Random password value
+
+               // Calculating the random password
+               for (var i=0;i<PwdLength;i++) {
+                    RandomIndex=Math.floor(Math.random() * (LengthOfChoices));
+                    RandomPassword=RandomPassword+ArrayofCharacters[RandomIndex];
+               };
+
+               console.log(RandomPassword)
+               console.log(typeof RandomPassword)
+               console.log(RandomPassword.length)
+
+           return (RandomPassword);
+           }   // End of function CalculateRandomPwd
+
+           //*********************************************************************************
+           // This code is triggered by the user clicking generate password.  It evaluates
+           // user input from the html form, and call the random generator function that
+           // will ultimately create the random password
+           //*********************************************************************************
+
+          $("#GeneratePassword").click(function()  //  This code executes when user clicks on Generate password
+          {    
+               var OptionSelected =0; 
+               if      (document.getElementById("TypeofChars1").checked) {OptionSelected =1}
+               else if (document.getElementById("TypeofChars2").checked) {OptionSelected =2}
+               else if (document.getElementById("TypeofChars3").checked) {OptionSelected =3}
+               else if (document.getElementById("TypeofChars4").checked) {OptionSelected =4}
+               else if (document.getElementById("TypeofChars5").checked) {OptionSelected =5}
+
+               // Updating the value of the password on the clipboard
+
+               document.getElementById("PasswordResult").style.color="black";
+               document.getElementById("MessageToCustomer").style.color="black";
+               document.getElementById("PasswordResult").innerHTML=CalculateRandomPwd($("#UserRequestedPwdLength").val(),OptionSelected)
+               document.getElementById("CopyToClippboard").disabled=false;
+               document.getElementById("ResetToDefaults").disabled=false;
+
+          })  //  End of function when user clicks on Generate password
       </script>
-
-
 </body>
-
 </html>
