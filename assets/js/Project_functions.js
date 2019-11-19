@@ -6,8 +6,10 @@
 // 3) Event that runs when user selects button to reset to defaults                                
 // 4) Event that runs when user clicks on generate password.  It calls CalculateRandompwd function 
 // 5) Event that runs when user clicks on copy to clipboard                                        
-// 6) Function CalculateRandompwd.  Calculates password conforming to user input                   
+// 6) Function CalculateRandompwd.  Calculates password conforming to user input
+//                    
 //*************************************************************************************************
+
 
 /***************************************************************************************************/
 // Following section reads the value of the numerical range and writes to the html of id # result 
