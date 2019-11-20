@@ -35,8 +35,8 @@ $(document).ready(function(){
 
 $("#ResetToDefaults").click(function()  //  This code executes when user clicks on Generate password
 {
-    document.getElementById("PasswordResult").style.color="white";     // hiding the password result
-    document.getElementById("MessageToCustomer").style.color="white";  // hiding the message to user 
+    document.getElementById("PasswordResult").style.display="none";     // hiding the password result
+    document.getElementById("MessageToCustomer").style.display="none";  // hiding the message to user 
     document.getElementById("UserRequestedPwdLength").value=45;        // setting the password length at 45
     document.getElementById("result").innerHTML="45";                  // showing the password length value
     document.getElementById("TypeofChars1").checked=true;  //   all choices checked
@@ -135,8 +135,8 @@ $("#GeneratePassword").click(function()  //  This code executes when user clicks
 
         // Updating the value of the password on the clipboard
         document.getElementById("PasswordResult").innerText=CalculateRandomPwd($("#UserRequestedPwdLength").val(),Option1,Option2,Option3,Option4)
-        document.getElementById("PasswordResult").style.color="black";  // Displays the password
-        document.getElementById("MessageToCustomer").style.color="black";  // Displays the message to user
+        document.getElementById("PasswordResult").style.display="block";  // Displays the password
+        document.getElementById("MessageToCustomer").style.display="block";  // Displays the message to user
         document.getElementById("CopyToClippboard").disabled=false;  // Enables button to copy to clipboard
         document.getElementById("ResetToDefaults").disabled=false;  // Enables button to reset to defaults
     }
