@@ -38,7 +38,7 @@
     <!--  Fifth row:  The buttons showing actions               -->
     <!--*******************************************************-->
     
-    <div class="container bg-white my-5">  <!--main wrapper-->
+    <div class="container my-5" id="Dashboard">  <!--main wrapper-->
 
           <!--****************************-->
           <!--First row:  main page title -->
@@ -58,7 +58,7 @@
 
               <div class="col-md-0 col-lg"></div>    <!--to manage margins better-->              
               
-              <div class="col-lg-4 col-md-11 border rounded-lg align-self-center mx-2 my-2">   <!--asks the length of the password to generate (8 to 129-->
+              <div class="col-lg-4 col-md-11 border rounded-lg align-self-center mx-2 my-2 bg-light">   <!--asks the length of the password to generate (8 to 129-->
                   <form>
                       <div class="form-group text-center">
                            <label for="formControlRange">Length of password (8-128)</label>
@@ -70,7 +70,7 @@
 
                 <div class="col-md-0 col-lg"></div>
 
-                <div class="col-lg-4 col-md-11 border rounded-lg py-2 mx-2 my-2">  <!-- Asks what types of characters need to be generated-->
+                <div class="col-lg-4 col-md-11 border rounded-lg py-2 mx-2 my-2 bg-light">  <!-- Asks what types of characters need to be generated-->
 
                     <div class="form-check">  <!--check box 1-->
                             <input class="form-check-input" type="checkbox" id="TypeofChars1" value="option1" checked>
@@ -110,7 +110,7 @@
           <!--******************************************************************************-->
 
          <div class="row my-5 text-center">  
-              <div class="col-sm-12">
+              <div class="col-sm-12" id= "MsgToCustRow">
                    <h2 id="MessageToCustomer">This is your custom generated password:</h2>
               </div>
          </div>  <!-- third row ends here-->
@@ -121,7 +121,7 @@
 
          <div class="row border text-center mx-5 mb-3">  <!--fourth row:  presents the results of the password-->
               <div class="col-sm-12 my-3">
-                   <div class="container ">
+                   <div class="container" id="PwdDspRow">
                          <p class="overflow-auto py-2" id="PasswordResult">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
                     </div>
                </div>
@@ -135,7 +135,7 @@
              <div class="col-sm-0 col-lg"></div>
 
              <div class="col-sm-12 col-md-4 col-lg-3 py-1">   <!--buttom that clears the screen-->
-                <button type="button" id="ResetToDefaults" class="btn btn-info btn-lg rounded-pill btn-block" disabled>Reset to defaults</button>  
+                <button type="button" id="ResetToDefaults" class="btn btn-primary btn-lg rounded-pill btn-block" disabled>Reset to defaults</button>  
              </div>
 
              <div class="col-sm-12 col-md-4 col-lg-3 py-1">  <!--buttom that generates the password-->
@@ -143,7 +143,7 @@
              </div>
 
              <div class="col-sm-12 col-md-4 col-lg-3 text-center py-1">   <!-- buttom that copies to the clipboard-->
-                    <button type="button" id="CopyToClippboard" class="btn btn-info btn-lg rounded-pill btn-block" disabled>Copy to clipboard</button>  
+                    <button type="button" id="CopyToClippboard" class="btn btn-primary btn-lg rounded-pill btn-block" disabled>Copy to clipboard</button>  
              </div>
 
              <div class="col-sm-0 col-lg"></div>
@@ -160,6 +160,8 @@
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
      <script src="assets/js/Project_functions.js"></script>  <!-- Contains nodejs functions and event handlers-->
 
      <script>

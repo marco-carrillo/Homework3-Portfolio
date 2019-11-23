@@ -38,7 +38,7 @@ $("#ResetToDefaults").click(function()  //  This code executes when user clicks 
     document.getElementById("PasswordResult").style.display="none";     // hiding the password result
     document.getElementById("MessageToCustomer").style.display="none";  // hiding the message to user 
     document.getElementById("UserRequestedPwdLength").value=45;        // setting the password length at 45
-    document.getElementById("result").innerHTML="45";                  // showing the password length value
+    document.getElementById("result").innerText="45";                  // showing the password length value
     document.getElementById("TypeofChars1").checked=true;  //   all choices checked
     document.getElementById("TypeofChars2").checked=true;  //  all choices checked
     document.getElementById("TypeofChars3").checked=true;  //  all choices checked
@@ -62,7 +62,19 @@ $("#CopyToClippboard").click(function() {
     document.execCommand('copy');
     selection.removeAllRanges();
 
-    alert("Password "+document.getElementById("PasswordResult").innerText+ "has been copied to clipboard.");
+    // Uses Jquery plug-in to deliver nice message  //
+
+    $.confirm({
+        title: 'Password copied to Clipboard!',
+        content: "Password "+document.getElementById("PasswordResult").innerText+ "has been copied to clipboard.",
+        type: 'green',
+        typeAnimated: true,
+        buttons: {
+            close: function () {
+            }
+        }
+    });
+    
 })
 
 //********************************************************************************************

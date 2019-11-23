@@ -10,3 +10,13 @@
     min-height: 100%;
     z-index:-1;
     } 
+
+#MessageToCustomer {
+    font-size=30px;
+}
+
+#MsgToCustRow {height:25px;}
+
+#PwdDspRow {height:60px;}
+
+#Dashboard {background-image:url("../images/little_pluses.png");}
