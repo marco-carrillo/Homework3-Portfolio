@@ -66,7 +66,7 @@ $("#CopyToClippboard").click(function() {
 
     $.confirm({
         title: 'Password copied to Clipboard!',
-        content: "Password "+document.getElementById("PasswordResult").innerText+ "has been copied to clipboard.",
+        content: "You are good to go..... Just paste the value, and you are set!",
         type: 'green',
         typeAnimated: true,
         buttons: {
@@ -152,6 +152,25 @@ $("#GeneratePassword").click(function()  //  This code executes when user clicks
         document.getElementById("CopyToClippboard").disabled=false;  // Enables button to copy to clipboard
         document.getElementById("ResetToDefaults").disabled=false;  // Enables button to reset to defaults
     }
-    else {alert("Please select at least one character type to continue")}
+    else    
+
+    $.confirm({
+        title: 'Invalid selection!',
+        content: "Please select at least one character type to continue",
+        type: 'red',
+        typeAnimated: true,
+        buttons: {
+            close: function () {
+            }
+        }
+    });
+
+    
+    
+    
+    ///////////////////////////////////////////////
+    
+    
+    //{alert("Please select at least one character type to continue")}
 
 })  //  End of function when user clicks on Generate password
