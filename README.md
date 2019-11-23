@@ -22,7 +22,7 @@ System will validate that at least one type of characters is selected.
 
 User will then push the button to generate password, and it will inmediately be displayed on the screen.
 
-(Assets/Images/screenshot.png)
+[picture](Assets/Images/screenshot.png)
 
 
 ## Additional functionality
